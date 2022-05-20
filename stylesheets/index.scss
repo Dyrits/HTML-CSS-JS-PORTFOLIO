@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+@import './variables';
+@import './mixins';
+
+body {
+  background-color: var(--color-darkestgrey-variation-white);
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  color: var(--color-white-variation-grey);
+  transition: var(--transition);
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+header {
+  min-height: 100vh;
+  color: inherit;
+  display: none;
+  transform: translateY(0) scale(1);
+  @media screen and (max-width: 600px) { padding: 0; }
+}
+
+section.container {
+  min-height: 100vh;
+  width: 100%;
+  @include absolute-top-left;
+  padding: 3rem 18rem;
+  @media screen and (max-width: 1600px){ padding: 2.75rem 12rem; }
+  @media screen and (max-width: 1200px){ padding: 2.5rem 3rem; }
+  @media screen and (max-width: 600px){ padding: 2.25rem 1.5rem 8rem; }
+
+}
+
+.container {
+  display: none;
+  transform: translateY(-100%) scaleY(0);
+  transition: var(--transition);
+  background-color: var(--color-darkestgrey-variation-white);
+}
+
+.active {
+  display: block;
+  transform: translateY(0) scaleY(1);
+  animation: appear 1s ease-in-out;
+  @keyframes appear {
+    0% { transform: translateY(-100%) scaleY(0); }
+    100% { transform: translateY(0) scaleY(1); }
+  }
+}
+
+@import './components/components';
+@import './components/controls';
+@import './sections/header';
+@import './sections/about';
+@import './sections/portfolio';
+@import './sections/blog';
+@import './sections/contact';
